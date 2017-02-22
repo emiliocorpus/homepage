@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222214744) do
+ActiveRecord::Schema.define(version: 20170222215249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_tags", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "article_tags", ["article_id"], name: "index_article_tags_on_article_id", using: :btree
+  add_index "article_tags", ["tag_id"], name: "index_article_tags_on_tag_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -43,6 +53,16 @@ ActiveRecord::Schema.define(version: 20170222214744) do
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
+
+  create_table "project_skills", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_skills", ["project_id"], name: "index_project_skills_on_project_id", using: :btree
+  add_index "project_skills", ["skill_id"], name: "index_project_skills_on_skill_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -76,8 +96,12 @@ ActiveRecord::Schema.define(version: 20170222214744) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "article_tags", "articles"
+  add_foreign_key "article_tags", "tags"
   add_foreign_key "comment_replies", "comments"
   add_foreign_key "comments", "articles"
+  add_foreign_key "project_skills", "projects"
+  add_foreign_key "project_skills", "skills"
   add_foreign_key "reactions", "comment_replies"
   add_foreign_key "reactions", "comments"
 end
