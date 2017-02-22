@@ -6,15 +6,19 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'coffee-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
+gem 'redis'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'rails_12factor'
 gem "react_on_rails"
 gem 'foreman'
+gem 'sprockets'
+
+# Use Rails Html Sanitizer for HTML sanitization
+gem "rails-html-sanitizer"
 
 
 group :development, :test do
@@ -39,5 +43,3 @@ group :development, :test do
 	
 end
 
-
-gem 'mini_racer', platforms: :ruby
