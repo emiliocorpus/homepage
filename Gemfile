@@ -17,6 +17,8 @@ gem "react_on_rails"
 gem 'foreman'
 gem 'sprockets'
 gem 'nokogiri'
+gem 'spring'
+gem 'puma'
 # Use Rails Html Sanitizer for HTML sanitization
 gem "rails-html-sanitizer"
 
