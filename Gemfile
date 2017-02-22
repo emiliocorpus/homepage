@@ -39,3 +39,5 @@ group :development, :test do
 	
 end
 
+
+gem 'mini_racer', platforms: :ruby
