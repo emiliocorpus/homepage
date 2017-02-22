@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: homepage_production
-  username: homepage
-  password: <%= ENV['HOMEPAGE_DATABASE_PASSWORD'] %>
+  # username: homepage
+  # password: <%= ENV['HOMEPAGE_DATABASE_PASSWORD'] %>
