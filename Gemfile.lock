@@ -271,6 +271,7 @@ DEPENDENCIES
   faker
   foreman
   gemsurance
+  guard
   guard-rspec
   httparty
   jbuilder

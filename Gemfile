@@ -34,6 +34,7 @@ group :development, :test do
 	gem "meta_request"
 		# for rails panel in chrome dev tools
 	gem "better_errors"
+	gem 'guard'
 		# for errors and full stack trace
 	gem "pry-rails", group: "development"
 		# debugger
