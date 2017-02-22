@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222214108) do
+ActiveRecord::Schema.define(version: 20170222214744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,23 @@ ActiveRecord::Schema.define(version: 20170222214108) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "comment_reply_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "reactions", ["comment_id"], name: "index_reactions_on_comment_id", using: :btree
+  add_index "reactions", ["comment_reply_id"], name: "index_reactions_on_comment_reply_id", using: :btree
+
   create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,4 +78,6 @@ ActiveRecord::Schema.define(version: 20170222214108) do
 
   add_foreign_key "comment_replies", "comments"
   add_foreign_key "comments", "articles"
+  add_foreign_key "reactions", "comment_replies"
+  add_foreign_key "reactions", "comments"
 end
