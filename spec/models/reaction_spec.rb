@@ -11,5 +11,9 @@ RSpec.describe Reaction, type: :model do
   	it 'should belong to a comment' do
   		expect(reaction.comment_id).to eq(comment.id)
   	end
+
+
+  	it 'should not exist if the comment reacted to is deleted'
+
   end
 end
