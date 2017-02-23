@@ -9,6 +9,8 @@ RSpec.describe Comment, type: :model do
   	it 'has content' do
   		expect(comment.content).to be_truthy
   	end
-
+  	it 'has many reactions' do
+  		expect(comment.reactions).not_to be_empty
+  	end
   end
 end
