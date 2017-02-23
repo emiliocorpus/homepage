@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223211513) do
+ActiveRecord::Schema.define(version: 20170223223343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,16 +42,6 @@ ActiveRecord::Schema.define(version: 20170223211513) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_idx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx", using: :btree
-
-  create_table "comment_replies", force: :cascade do |t|
-    t.string   "author"
-    t.string   "content"
-    t.integer  "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "comment_replies", ["comment_id"], name: "index_comment_replies_on_comment_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "author"
@@ -85,14 +75,13 @@ ActiveRecord::Schema.define(version: 20170223211513) do
   end
 
   create_table "reactions", force: :cascade do |t|
+    t.integer  "category"
     t.integer  "comment_id"
-    t.integer  "comment_reply_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "reactions", ["comment_id"], name: "index_reactions_on_comment_id", using: :btree
-  add_index "reactions", ["comment_reply_id"], name: "index_reactions_on_comment_reply_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -108,10 +97,8 @@ ActiveRecord::Schema.define(version: 20170223211513) do
 
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
-  add_foreign_key "comment_replies", "comments"
   add_foreign_key "comments", "articles"
   add_foreign_key "project_skills", "projects"
   add_foreign_key "project_skills", "skills"
-  add_foreign_key "reactions", "comment_replies"
   add_foreign_key "reactions", "comments"
 end
