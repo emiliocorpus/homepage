@@ -21,6 +21,7 @@ gem 'spring'
 gem 'puma'
 # Use Rails Html Sanitizer for HTML sanitization
 gem "rails-html-sanitizer"
+gem 'closure_tree'
 
 
 group :development, :test do

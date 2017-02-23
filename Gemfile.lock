@@ -60,6 +60,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    closure_tree (6.4.0)
+      activerecord (>= 4.1.0)
+      with_advisory_lock (>= 3.0.0)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -254,6 +257,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    with_advisory_lock (3.1.0)
+      activerecord (>= 3.2)
+      thread_safe
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -266,6 +272,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   capybara
+  closure_tree
   coffee-rails
   factory_girl_rails
   faker

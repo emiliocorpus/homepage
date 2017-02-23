@@ -9,8 +9,19 @@ RSpec.describe Comment, type: :model do
   	it 'has content' do
   		expect(comment.content).to be_truthy
   	end
-  	it 'has many reactions' do
-  		expect(comment.reactions).not_to be_empty
+  	
+  context "nested comments" do
+  	grandparent = Comment.create(author: 'Grandparent', content: "I am the grand pappy comment")
+  	parent = Comment.create(author: 'Parent', content: "I am the parent comment")
+  	grandparent.add_child(parent)
+
+  	it 'have a root comment' do
+  		expect(grandparent.children.length).to eq(1)
   	end
+
+
+  end
+
+
   end
 end
